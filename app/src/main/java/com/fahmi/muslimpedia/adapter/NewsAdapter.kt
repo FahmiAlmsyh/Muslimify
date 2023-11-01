@@ -1,12 +1,14 @@
 package com.fahmi.muslimpedia.adapter
 
 import android.content.ClipData.Item
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fahmi.muslimpedia.R
 import com.fahmi.muslimpedia.data.model.ArticlesItem
 import com.fahmi.muslimpedia.databinding.ItemRowNewsBinding
+import com.fahmi.muslimpedia.ui.detail.DetailNewsActivity
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -49,7 +51,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
         holder.binding.apply {
             tvSource.text = dataNews.source.name
             tvTitle.text = dataNews.title
-            tvDate.text = myDate
+            tvDate.text = dataNews.publishedAt
 
 
             Picasso.get()
@@ -59,7 +61,13 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
                 .placeholder(R.drawable.ic_logo)
                 .into(imgNews)
         }
+        holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView.context, DetailNewsActivity::class.java)
 
+            intent.putExtra(DetailNewsActivity.DATA_NEWS, dataNews)
+            intent.putExtra(DetailNewsActivity.DATE_NEWS, myDate)
+            holder.itemView.context.startActivity(intent)
+        }
 
     }
 }
