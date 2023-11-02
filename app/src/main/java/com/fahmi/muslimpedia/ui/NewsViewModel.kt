@@ -29,4 +29,8 @@ class NewsViewModel(private val repository: NewsRepository) : ViewModel() {
         repository.getWarningForMuslim()
     }
 
+    fun getSearchNews(q: String) {
+        repository.getSearchNews(q)
+    }
+
 }
