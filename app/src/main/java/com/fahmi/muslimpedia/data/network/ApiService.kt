@@ -1,6 +1,6 @@
 package com.fahmi.muslimpedia.data.network
 
-import com.fahmi.muslimpedia.data.model.NewsResponse
+import com.fahmi.muslimpedia.data.model.ApiResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,37 +9,38 @@ interface ApiService {
 
     @GET("/v2/everything")
     fun getCommonMuslimNews(
-        @Query("q") q: String = "islam",
+        @Query("q") q: String = "International News",
         @Query("language") language: String = "en",
         @Query("pageSize") pageSize: Int = 10,
-        @Query("sortBy") sortBy: String = "popularity"
-    ): Call<NewsResponse>
+        @Query("sortBy") sortBy: String = "relevancy"
+    ): Call<ApiResponse>
 
     @GET("/v2/everything")
     fun getAlQuranNews(
-        @Query("q") q: String = "Al-quran",
+        @Query("q") q: String = "Islamic Education",
         @Query("language") language: String = "en"
-    ): Call<NewsResponse>
+    ): Call<ApiResponse>
 
 
-    @GET("/v2/top-headlines")
+    @GET("/v2/everything")
     fun getAlJazeeraNews(
-        @Query("sources") sources: String = "al-jazeera-english"
-    ): Call<NewsResponse>
+        @Query("q") q: String = "Humanitarian News",
+        @Query("language") language: String = "en"
+    ): Call<ApiResponse>
 
 
     @GET("/v2/everything")
     fun getWarningForMuslimNews(
-        @Query("q") q: String = "anti islam",
+        @Query("q") q: String = "Inspirational Content",
         @Query("language") language: String = "en"
-    ): Call<NewsResponse>
+    ): Call<ApiResponse>
 
 
     @GET("/v2/everything")
     fun getSearchNews(
         @Query("q") q: String,
         @Query("pageSize") pageSize: Int = 19,
-    ): Call<NewsResponse>
+    ): Call<ApiResponse>
 
 
 }
