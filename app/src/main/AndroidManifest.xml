@@ -31,7 +31,7 @@
             android:name=".ui.detail.DetailNewsActivity"
             android:exported="false"
             android:label="@string/title_activity_detail_news"
-            android:theme="@style/Theme.MuslimPedia" />
+            android:theme="@style/Theme.MuslimPedia.actionbar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

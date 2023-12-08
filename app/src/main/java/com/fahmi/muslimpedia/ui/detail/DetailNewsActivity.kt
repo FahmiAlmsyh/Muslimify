@@ -27,7 +27,6 @@ class DetailNewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbarDetail)
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -37,7 +36,6 @@ class DetailNewsActivity : AppCompatActivity() {
         val dataNews = intent.getParcelableExtra<ArticlesItem>(DATA_NEWS)
         val date = intent.getStringExtra(DATE_NEWS)
 
-        setUpMyXml(dataNews,date)
         setUpWebView(dataNews)
     }
 
@@ -69,17 +67,4 @@ class DetailNewsActivity : AppCompatActivity() {
         dataNews?.url?.let { binding.wvDetail.loadUrl(it) }
     }
 
-    private fun setUpMyXml(dataNews: ArticlesItem?, date: String?) {
-        binding.apply {
-            detailTitle.text = dataNews?.title
-            detailAuthor.text = dataNews?.author
-            detailPublishedAt.text = date
-
-            Picasso.get()
-                .load(dataNews?.urlToImage)
-                .fit()
-                .centerInside()
-                .into(detailImage)
-        }
-    }
 }

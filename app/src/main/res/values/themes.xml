@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.MuslimPedia" parent="Base.Theme.MuslimPedia" />
+    <style name="Theme.MuslimPedia.actionbar" parent="Theme.Material3.DayNight"/>
 </resources>
